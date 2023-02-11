@@ -4,8 +4,8 @@
         <draggable v-model="data" group="people" item-key="id" tag="ul">
             <template #item="{element, index}">
               <div style="display:flex;margin:10px">
-                <li @click="liclick(index)">index: {{element.id}}
-                  active: {{element.active}}
+                <li @click="liclick(index)">{{element.app}} index: {{element.id}}
+                  select: {{element.select}}
                 </li>
                 <li>
                   <span class="del" v-on:click="del(index)">[削除]</span>
@@ -35,18 +35,21 @@ export default {
         return {
             data: [
                 {
+                    app: "edge_detection",
                     id: 1,
-                    active: 1,
+                    select: 1,
                     content: "テスト1",
                 },
                 {
+                    app: "edge_detection",
                     id: 2,
-                    active: 0,
+                    select: 0,
                     content: "テスト2",
                 },
                 {
+                    app: "scratch_detection",
                     id: 3,
-                    active: 0,
+                    select: 0,
                     content: "テスト3",
                 },
             ],
@@ -67,24 +70,25 @@ export default {
           console.log("connection to websocket server closed.");
         });
       },
-      active(index) {
+      select(index) {
         for (var i=0;i<this.data.length;i++)
         {
-          this.data[i]["active"] = 0; 
+          this.data[i]["select"] = 0; 
         }
 
-        this.data[index]["active"] = 1; 
+        this.data[index]["select"] = 1; 
 
         for (i=0;i<this.data.length;i++)
         {
-          console.log(this.data[i]["active"]); 
+          console.log(this.data[i]["select"]); 
         }
       },
       add_last() {
         this.data.push( 
           {
+              app: "edge_detection",
               id: 3,
-              active: 0,
+              select: 0,
               content: "テスト3",
           }
         );
@@ -92,19 +96,20 @@ export default {
       add(index) {
         this.data.splice(index+1, 0, 
           {
+              app: "edge_detection",
               id: 3,
-              active: 0,
+              select: 0,
               content: "テスト3",
           }
         );
-        this.active(index+1)
+        this.select(index+1)
       },
       del(index) {
         this.data.splice(index, 1);
       },
       liclick(index) {
         console.log("test")
-        this.active(index)
+        this.select(index)
       },
     },
 };
