@@ -1,5 +1,5 @@
 <template>
-    <!--button v-on:click="add_last()">追加</button-->
+    <button v-on:click="add_last()">send</button>
     <div class="hello">
         <draggable v-model="data" group="people" item-key="id" tag="ul">
             <template #item="{element, index}">
@@ -8,10 +8,10 @@
                   select: {{element.select}}
                 </li>
                 <li>
-                  <span class="del" v-on:click="del(index)">[削除]</span>
+                  <span class="del" v-on:click="del(index)">[del]</span>
                 </li>
                 <li>
-                  <span class="add" v-on:click="add(index)">[追加]</span>
+                  <span class="add" v-on:click="add(index)">[add]</span>
                 </li>
               </div>
             </template>
