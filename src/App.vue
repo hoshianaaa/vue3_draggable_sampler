@@ -74,7 +74,7 @@ ul {
   list-style-type: none;
 }
 li {
-  cursor: pointer;
+  cursor: move;
   padding: 10px;
   border: solid #ddd 1px;
 }
