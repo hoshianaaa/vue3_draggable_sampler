@@ -4,7 +4,7 @@
         <draggable v-model="data" group="people" item-key="id" tag="ul">
             <template #item="{element, index}">
               <div>
-                <li>{{element.id}}
+                <li @click="liclick(index)">{{element.id}}
                   <span class="del" v-on:click="del(index)">[削除]</span>
                   <span class="add" v-on:click="add(index)">[追加]</span>
                 </li>
@@ -42,7 +42,6 @@ export default {
     methods: {
 
       add_last() {
-        console.log("test")
         this.data.push( 
           {
               id: 3,
@@ -51,7 +50,6 @@ export default {
         );
       },
       add(index) {
-        console.log("test")
         this.data.splice(index+1, 0, 
           {
               id: 3,
@@ -60,10 +58,17 @@ export default {
         );
       },
       del(index) {
-        console.log("test")
         this.data.splice(index, 1);
       },
-
+      liclick() {
+        console.log("test")
+        this.data.push( 
+          {
+              id: 3,
+              content: "テスト3",
+          }
+        );
+      },
     },
     
 };
