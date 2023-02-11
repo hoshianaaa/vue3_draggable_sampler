@@ -4,8 +4,8 @@
         <draggable v-model="data" group="people" item-key="id" tag="ul">
             <template #item="{element, index}">
               <div style="display:flex;margin:10px">
-                <li @click="liclick(index)">{{element.id}}
-                  {{element.active}}
+                <li @click="liclick(index)">index: {{element.id}}
+                  active: {{element.active}}
                 </li>
                 <li>
                   <span class="del" v-on:click="del(index)">[削除]</span>
